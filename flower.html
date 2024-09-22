@@ -9,8 +9,8 @@
     <title>Flower</title>
   </head>
   <body class="container">
-    <audio id="miAudio" src="León Larregui - Rue Vieille Du Temple (Live) ft. Mon Laferte.mp3"></audio>
-    <button onclick="document.getElementById('miAudio').play()">Reproducir música</button>
+    <audio id="miAudio" src="sound/León Larregui - Rue Vieille Du Temple (Live) ft. Mon Laferte.mp3" controls></audio>
+    <button id="playButton">Reproducir música</button>
     <div id="lyrics"></div>
     <h1 class="titulo">Te extraño</h1>
     <div class="night"></div>
@@ -329,5 +329,36 @@
     <script src="anim.js"></script>
     <script src="main.js"></script>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var audio = document.getElementById('miAudio');
+        var playButton = document.getElementById('playButton');
+
+        playButton.addEventListener('click', function() {
+          if (audio.paused) {
+            audio.play().then(function() {
+              console.log('Reproducción iniciada con éxito');
+            }).catch(function(error) {
+              console.log('Error al reproducir:', error);
+            });
+          } else {
+            audio.pause();
+            console.log('Audio pausado');
+          }
+        });
+
+        audio.addEventListener('play', function() {
+          console.log('El audio está reproduciéndose');
+        });
+
+        audio.addEventListener('pause', function() {
+          console.log('El audio está pausado');
+        });
+
+        audio.addEventListener('error', function(e) {
+          console.log('Error en la carga del audio:', e);
+        });
+      });
+    </script>
   </body>
 </html>
