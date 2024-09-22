@@ -78,3 +78,5 @@ audio.addEventListener("ended", function () {
   lyrics.innerHTML = ""; // Limpia las letras cuando la canción termina
   audio.currentTime = 0; // Opcional: reinicia el audio para reproducir de nuevo
 });
+
+audio.play();
