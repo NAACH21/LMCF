@@ -7,11 +7,20 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="img/flowers.png" type="image/x-icon" />
     <title>Flower</title>
+    <style>
+      audio, #lyrics, .audio-player {
+        display: none !important;
+      }
+      #lyrics {
+        display: block !important;
+        color: white;
+        font-size: 24px;
+      }
+    </style>
   </head>
   <body class="container">
-    <audio id="miAudio" src="sound/León Larregui - Rue Vieille Du Temple (Live) ft. Mon Laferte.mp3" controls></audio>
-    <div id="lyrics"></div>
-    <h1 class="titulo">Te extraño</h1>
+    <audio id="miAudio" src="sound/León Larregui - Rue Vieille Du Temple (Live) ft. Mon Laferte.mp3" style="display: none;"></audio>
+    <h1 class="titulo">Para ti, que siempre serás Hermosa</h1>
     <div class="night"></div>
     <div class="flowers">
       <div class="flower flower--1">
@@ -322,6 +331,7 @@
         </div>
       </div>
     </div>
+    <div id="lyrics" style="position: absolute; z-index: 1000;"></div>
     <script src="anim.js"></script>
     <script src="main.js"></script>
     <script src="sync.js"></script>
