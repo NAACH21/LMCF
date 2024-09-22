@@ -80,3 +80,28 @@ audio.addEventListener("ended", function () {
 });
 
 audio.play();
+
+// Obtén una referencia al elemento de audio
+var audio = document.getElementById('miAudio');
+
+// Función para comprobar el estado de reproducción
+function comprobarReproduccion() {
+    if (!audio.paused) {
+        console.log('La música se está reproduciendo');
+        console.log('Tiempo actual: ' + audio.currentTime + ' segundos');
+    } else {
+        console.log('La música está pausada o no se ha iniciado');
+    }
+}
+
+// Comprueba el estado cada segundo
+setInterval(comprobarReproduccion, 1000);
+
+// Intenta reproducir el audio cuando se carga la página
+window.addEventListener('load', function() {
+    audio.play().then(function() {
+        console.log('Reproducción iniciada con éxito');
+    }).catch(function(error) {
+        console.log('No se pudo iniciar la reproducción automáticamente:', error);
+    });
+});
