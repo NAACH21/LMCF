@@ -125,10 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('El audio está reproduciéndose');
     });
 
-    audio.addEventListener('pause', function() {
-        console.log('El audio está pausado');
-    });
-
     audio.addEventListener('error', function(e) {
         console.log('Error en la carga del audio:', e);
     });
