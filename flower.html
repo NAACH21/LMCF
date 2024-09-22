@@ -332,31 +332,29 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var audio = document.getElementById('miAudio');
-        var playButton = document.getElementById('playButton');
+        var reproduccionIniciada = false;
 
-        playButton.addEventListener('click', function() {
-          if (audio.paused) {
-            audio.play().then(function() {
-              console.log('Reproducción iniciada con éxito');
-            }).catch(function(error) {
-              console.log('Error al reproducir:', error);
-            });
-          } else {
-            audio.pause();
-            console.log('Audio pausado');
-          }
+        document.addEventListener('click', function() {
+            if (!reproduccionIniciada) {
+                audio.play().then(function() {
+                    console.log('Reproducción iniciada con éxito');
+                    reproduccionIniciada = true;
+                }).catch(function(error) {
+                    console.log('Error al reproducir:', error);
+                });
+            }
         });
 
         audio.addEventListener('play', function() {
-          console.log('El audio está reproduciéndose');
+            console.log('El audio está reproduciéndose');
         });
 
         audio.addEventListener('pause', function() {
-          console.log('El audio está pausado');
+            console.log('El audio está pausado');
         });
 
         audio.addEventListener('error', function(e) {
-          console.log('Error en la carga del audio:', e);
+            console.log('Error en la carga del audio:', e);
         });
       });
     </script>

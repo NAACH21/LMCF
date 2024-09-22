@@ -105,3 +105,31 @@ window.addEventListener('load', function() {
         console.log('No se pudo iniciar la reproducción automáticamente:', error);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('miAudio');
+    var reproduccionIniciada = false;
+
+    document.addEventListener('click', function() {
+        if (!reproduccionIniciada) {
+            audio.play().then(function() {
+                console.log('Reproducción iniciada con éxito');
+                reproduccionIniciada = true;
+            }).catch(function(error) {
+                console.log('Error al reproducir:', error);
+            });
+        }
+    });
+
+    audio.addEventListener('play', function() {
+        console.log('El audio está reproduciéndose');
+    });
+
+    audio.addEventListener('pause', function() {
+        console.log('El audio está pausado');
+    });
+
+    audio.addEventListener('error', function(e) {
+        console.log('Error en la carga del audio:', e);
+    });
+});
